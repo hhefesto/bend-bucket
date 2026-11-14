@@ -1,0 +1,11 @@
+--- a/Bucket.bend	2026-11-14 16:57:31.678153252 -0600
++++ b/Bucket.bend	2026-11-14 16:57:31.678693976 -0600
+@@ -57,7 +57,7 @@
+ def bk.level(r: bk.Rule, +now: Nat, b: bk.B) -> Nat:
+   match b:
+     case bk.B{l, a}:
+-      Nat.min(bk.cap(r), Nat.add(l, Nat.sub(now, a)))
++      Nat.add(l, Nat.sub(now, a))
+ 
+ def bk.find.at(hit: Bool, +b: bk.B, more: Unit -> Maybe<&2, bk.B>) -> Maybe<&2, bk.B>:
+   match hit:

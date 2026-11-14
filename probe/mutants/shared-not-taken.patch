@@ -1,0 +1,11 @@
+--- a/Bucket.bend	2026-11-14 16:57:31.630236116 -0600
++++ b/Bucket.bend	2026-11-14 16:57:31.633693553 -0600
+@@ -118,7 +118,7 @@
+ def bk.taken(+rs: bk.Rules, +now: Nat, +k: String, bs: bk.Bs) -> bk.Bs:
+   match rs bs:
+     case bk.Rules{+one, +all} bk.Bs{+a, +es}:
+-      bk.Bs{bk.B{Nat.sub(bk.level(all, now, a), bk.period(all)), now},
++      bk.Bs{bk.B{bk.level(all, now, a), now},
+         bk.KB{k, bk.B{Nat.sub(bk.mine(one, now, bk.find(es, k)), bk.period(one)), now}} <> bk.unfilled(one, now, bk.drop(es, k))}
+ 
+ def bk.wait(+rs: bk.Rules, +now: Nat, +k: String, bs: bk.Bs) -> Nat:

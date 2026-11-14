@@ -1,0 +1,11 @@
+--- a/Bucket.bend	2026-11-14 16:57:31.593468629 -0600
++++ b/Bucket.bend	2026-11-14 16:57:31.596693205 -0600
+@@ -131,7 +131,7 @@
+     case True{}:
+       bk.R{bk.Admitted{}, bk.taken(rs, now, k, bs)}
+     case False{}:
+-      bk.R{bk.Wait{bk.wait(rs, now, k, bs)}, bs}
++      bk.R{bk.Wait{bk.wait(rs, now, k, bs)}, bk.taken(rs, now, k, bs)}
+ 
+ # A try by k at now: let through (the buckets after it), or how long to wait
+ # (the buckets as they were)
