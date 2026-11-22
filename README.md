@@ -19,4 +19,23 @@ proved with Limit's sizes and a 1 ms period (at one instant nothing
 refills; the kernel counts in unary); probe/Bucket.bend runs them with
 Limit's own periods: 5 and 20.
 
-Mutants (`../mutants.sh bucket`): 7, each caught.
+Mutants (`./mutants.sh`): 7, each caught.
+
+## This repository
+
+Written for mugen-app (mugen's chat in a browser) as part of its Bend
+backend, which replaced a Haskell one: a mention above of `backend/`,
+`server/` or `server/test/compare.sh` is that app's. The libraries written
+with it: [bend-wire](https://github.com/hhefesto/bend-wire), [bend-route](https://github.com/hhefesto/bend-route), [bend-json](https://github.com/hhefesto/bend-json), [bend-files](https://github.com/hhefesto/bend-files), [bend-md](https://github.com/hhefesto/bend-md), [bend-sha2](https://github.com/hhefesto/bend-sha2), [bend-radix](https://github.com/hhefesto/bend-radix), [bend-text](https://github.com/hhefesto/bend-text), [bend-time](https://github.com/hhefesto/bend-time), [bend-entropy](https://github.com/hhefesto/bend-entropy), [bend-bcrypt](https://github.com/hhefesto/bend-bcrypt).
+
+**Using it.** Bend imports by path: clone this repository as `bend-bucket/`
+beside your code,
+and import it: `import ../bend-bucket/Bucket.bend as X`. In a Nix build, copy the flake's
+source (or its `packages.default`) there.
+
+**Checks** (`nix flake check`, with the pinned Bend 2.0.39):
+`bend PROOF.bend --verdict` (its laws, rechecked by the BendTT kernel);
+`./mutants.sh` (each mistake in `probe/mutants/` caught by the laws);
+`bend FILE.bend --check-only` on each module.
+
+**License**: MIT (`LICENSE`).
